@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sandra Gutiérrez — Coaching para Mujeres</title>
+<meta name="description" content="Coaching fitness, nutrición y hábitos para mujeres. 1 semana gratis sin compromiso.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,800;1,9..144,600&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fafaf7;
+  --ink:#0a0a0a;
+  --ink-soft:#3a3a3a;
+  --muted:#8a8580;
+  --line:#e8e4de;
+  --accent:#ffc9d4;
+  --accent-deep:#ff6b88;
+  --card:#ffffff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter Tight',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.55;
+  font-weight:400;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+/* Noise overlay */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.serif{font-family:'Fraunces',serif;font-weight:600;letter-spacing:-.02em;line-height:1.02}
+.italic{font-style:italic}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px;position:relative;z-index:2}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:18px 28px;display:flex;justify-content:space-between;align-items:center;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  background:rgba(250,250,247,.78);border-bottom:1px solid var(--line);
+}
+.logo{font-family:'Fraunces',serif;font-size:19px;font-weight:600;letter-spacing:-.02em}
+.logo span{color:var(--accent-deep);font-style:italic}
+.nav-right{display:flex;gap:14px;align-items:center}
+.lang{
+  background:transparent;border:1px solid var(--line);border-radius:999px;
+  padding:7px 12px;font-family:inherit;font-size:12px;letter-spacing:.08em;
+  text-transform:uppercase;cursor:pointer;color:var(--ink);
+}
+.lang:focus{outline:none;border-color:var(--accent-deep)}
+
+/* HERO */
+.hero{padding:160px 0 100px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.3fr .9fr;gap:60px;align-items:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:28px;
+}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--accent-deep)}
+h1.hero-title{font-size:clamp(48px,7.5vw,104px);margin-bottom:26px}
+h1.hero-title .accent{color:var(--accent-deep);font-style:italic;font-weight:300}
+.hero-sub{font-size:19px;color:var(--ink-soft);max-width:520px;margin-bottom:38px}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;padding:16px 28px;
+  border-radius:999px;font-family:inherit;font-size:14px;font-weight:500;
+  letter-spacing:.02em;text-decoration:none;cursor:pointer;border:none;
+  transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s;
+}
+.btn-primary{background:var(--ink);color:#fff}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 40px -18px rgba(0,0,0,.5)}
+.btn-primary .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.btn-ghost{color:var(--ink);border-bottom:1px solid var(--ink);padding:8px 2px;border-radius:0}
+.btn-ghost:hover{color:var(--accent-deep);border-color:var(--accent-deep)}
+
+/* Hero card */
+.hero-card{
+  position:relative;aspect-ratio:3/4;border-radius:24px;overflow:hidden;
+  background:linear-gradient(160deg,var(--accent) 0%,#ffe4ea 50%,#fff 100%);
+  border:1px solid var(--line);
+  box-shadow:0 60px 120px -40px rgba(255,107,136,.35),0 20px 40px -20px rgba(0,0,0,.1);
+}
+.hero-card-inner{position:absolute;inset:0;padding:32px;display:flex;flex-direction:column;justify-content:space-between}
+.badge-free{
+  align-self:flex-start;background:#0a0a0a;color:#fff;border-radius:999px;
+  padding:10px 18px;font-size:11px;letter-spacing:.15em;text-transform:uppercase;
+}
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:20px;color:#0a0a0a}
+.stat-num{font-family:'Fraunces',serif;font-size:44px;font-weight:600;line-height:1}
+.stat-label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-top:6px;opacity:.7}
+.floating-tag{
+  position:absolute;background:#fff;border-radius:14px;padding:12px 16px;
+  font-size:12px;box-shadow:0 10px 30px rgba(0,0,0,.12);
+  display:flex;align-items:center;gap:8px;
+}
+.ft1{top:28%;left:-22px;animation:float 6s ease-in-out infinite}
+.ft2{bottom:28%;right:-30px;animation:float 7s ease-in-out infinite .5s}
+.dot-green{width:8px;height:8px;border-radius:50%;background:#4ade80}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* Marquee */
+.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0;overflow:hidden;background:#fff}
+.marquee-track{display:flex;gap:60px;white-space:nowrap;animation:scroll 40s linear infinite;font-family:'Fraunces',serif;font-size:28px;font-style:italic}
+.marquee-track span{display:inline-flex;align-items:center;gap:60px}
+.marquee-track .dot-sep{color:var(--accent-deep)}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* Sections */
+section{padding:110px 0;position:relative}
+.section-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:18px;display:block}
+.section-title{font-size:clamp(36px,5.5vw,68px);margin-bottom:22px;max-width:900px}
+
+/* About */
+.about{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.about-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:70px;align-items:start}
+.about-img{
+  aspect-ratio:4/5;border-radius:20px;
+  background:
+    radial-gradient(circle at 30% 20%,var(--accent) 0%,transparent 50%),
+    linear-gradient(180deg,#fff 0%,#f8eef1 100%);
+  border:1px solid var(--line);position:relative;overflow:hidden;
+}
+.about-img::after{
+  content:"SG";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-family:'Fraunces',serif;font-size:180px;font-weight:600;color:var(--accent-deep);opacity:.2;
+}
+.pillars{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:30px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.pillar{background:var(--card);padding:22px}
+.pillar-num{font-family:'Fraunces',serif;color:var(--accent-deep);font-size:14px;font-style:italic}
+.pillar-name{font-weight:500;margin-top:6px;font-size:15px}
+
+/* Problems */
+.problems-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:50px}
+.problem{
+  padding:36px 30px;border:1px solid var(--line);border-radius:20px;background:var(--card);
+  transition:transform .4s,border-color .4s;
+}
+.problem:hover{transform:translateY(-6px);border-color:var(--accent-deep)}
+.problem-icon{font-family:'Fraunces',serif;font-size:52px;color:var(--accent-deep);font-style:italic;line-height:1}
+.problem h3{font-family:'Fraunces',serif;font-size:24px;margin:18px 0 10px}
+.problem p{color:var(--ink-soft);font-size:15px}
+
+/* Plans */
+.plans{background:var(--ink);color:#fff;border-radius:32px;margin:0 28px;padding:90px 60px}
+.plans .section-label{color:var(--accent)}
+.plans-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:60px;gap:30px;flex-wrap:wrap}
+.plans .section-title{color:#fff;margin-bottom:0}
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.plan{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);
+  border-radius:22px;padding:34px 30px;position:relative;
+  transition:transform .4s,background .4s;
+}
+.plan:hover{transform:translateY(-8px);background:rgba(255,255,255,.07)}
+.plan.featured{background:linear-gradient(180deg,var(--accent) 0%,#ffb3c2 100%);color:var(--ink);border-color:transparent}
+.plan.featured .plan-feat{color:var(--ink-soft)}
+.plan-tag{position:absolute;top:-12px;right:22px;background:var(--ink);color:var(--accent);padding:6px 14px;border-radius:999px;font-size:10px;letter-spacing:.15em;text-transform:uppercase}
+.plan-name{font-family:'Fraunces',serif;font-size:30px;margin-bottom:6px}
+.plan-slogan{font-size:13px;opacity:.7;margin-bottom:22px;font-style:italic;font-family:'Fraunces',serif}
+.plan-price{font-family:'Fraunces',serif;font-size:54px;font-weight:600;line-height:1}
+.plan-price sup{font-size:18px;font-weight:400;opacity:.6;vertical-align:super}
+.plan-period{font-size:12px;opacity:.6;margin-bottom:24px}
+.plan-feats{list-style:none;margin-bottom:28px}
+.plan-feats li{padding:10px 0;border-top:1px solid rgba(255,255,255,.1);font-size:14px;display:flex;gap:10px;align-items:flex-start}
+.plan.featured .plan-feats li{border-color:rgba(0,0,0,.12)}
+.plan-feats li::before{content:"→";color:var(--accent-deep);font-weight:600;flex-shrink:0}
+.plan .btn{width:100%;justify-content:center}
+.plan:not(.featured) .btn{background:#fff;color:var(--ink)}
+.plan.featured .btn{background:var(--ink);color:#fff}
+
+/* FAQ */
+.faq{max-width:820px;margin:50px auto 0}
+details{border-bottom:1px solid var(--line);padding:26px 0;cursor:pointer}
+summary{list-style:none;display:flex;justify-content:space-between;align-items:center;font-family:'Fraunces',serif;font-size:22px;gap:20px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:28px;color:var(--accent-deep);transition:transform .3s;font-weight:300}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin-top:16px;color:var(--ink-soft);font-size:16px;max-width:90%}
+
+/* CTA Final */
+.final{text-align:center;padding:130px 28px;background:linear-gradient(180deg,var(--bg) 0%,#fff0f3 100%)}
+.final h2{font-size:clamp(44px,7vw,92px);margin-bottom:24px}
+.final p{font-size:18px;color:var(--ink-soft);max-width:560px;margin:0 auto 36px}
+
+/* Footer */
+footer{background:var(--ink);color:#fff;padding:70px 28px 36px}
+.footer-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,.1)}
+footer h4{font-family:'Fraunces',serif;font-size:28px;margin-bottom:14px}
+footer p{color:rgba(255,255,255,.6);font-size:14px;max-width:400px}
+.footer-col h5{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+.footer-col a{display:block;color:rgba(255,255,255,.75);text-decoration:none;padding:6px 0;font-size:14px;transition:color .2s}
+.footer-col a:hover{color:var(--accent)}
+.footer-bottom{max-width:1180px;margin:30px auto 0;display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.4)}
+
+/* Reveal animation */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* Mobile */
+@media(max-width:900px){
+  .hero-grid,.about-grid{grid-template-columns:1fr;gap:50px}
+  .hero{padding:130px 0 70px}
+  .problems-grid,.plans-grid{grid-template-columns:1fr}
+  .plans{padding:60px 28px;margin:0 16px}
+  .footer-grid{grid-template-columns:1fr;gap:30px}
+  .hero-card{max-width:380px}
+  .ft1,.ft2{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Sandra<span>·</span>Gutiérrez</div>
+  <div class="nav-right">
+    <select class="lang" id="langSel" aria-label="Language">
+      <option value="es">ES</option>
+      <option value="en">EN</option>
+      <option value="fr">FR</option>
+      <option value="it">IT</option>
+      <option value="de">DE</option>
+    </select>
+    <a href="https://wa.me/34633448908" class="btn btn-primary" style="padding:11px 20px;font-size:13px"><span class="dot"></span><span data-k="navCta">WhatsApp</span></a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="reveal">
+        <span class="eyebrow" data-k="eyebrow">Coaching 1:1 · 100% Online</span>
+        <h1 class="serif hero-title"><span data-k="h1a">No necesitas</span><br><span class="accent" data-k="h1b">otra dieta.</span><br><span data-k="h1c">Necesitas</span> <span class="italic serif" data-k="h1d">estructura</span>.</h1>
+        <p class="hero-sub" data-k="heroSub">Personal trainer, pilates y trabajadora social. Acompañamiento real para mujeres de 20 a 30 años que quieren recuperar constancia, hábitos y autoestima.</p>
+        <div class="cta-row">
+          <a href="https://wa.me/34633448908?text=Hola%20Sandra%2C%20quiero%20mi%20semana%20gratis" class="btn btn-primary"><span class="dot"></span><span data-k="ctaPrimary">Empezar mi semana gratis</span></a>
+          <a href="#planes" class="btn btn-ghost" data-k="ctaGhost">Ver planes →</a>
+        </div>
+      </div>
+      <div class="hero-card reveal" style="transition-delay:.15s">
+        <div class="hero-card-inner">
+          <div class="badge-free" data-k="badgeFree">✦ 1 Semana Gratis</div>
+          <div class="hero-stats">
+            <div><div class="stat-num">25</div><div class="stat-label" data-k="stat1">Años · ES/EN</div></div>
+            <div><div class="stat-num">1:1</div><div class="stat-label" data-k="stat2">Online</div></div>
+            <div><div class="stat-num">3</div><div class="stat-label" data-k="stat3">Disciplinas</div></div>
+            <div><div class="stat-num">0€</div><div class="stat-label" data-k="stat4">Compromiso</div></div>
+          </div>
+        </div>
+        <div class="floating-tag ft1"><div class="dot-green"></div><span data-k="tag1">Respuesta en 24h</span></div>
+        <div class="floating-tag ft2">💪 <span data-k="tag2">Pilates + Fuerza</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span data-k="mq">Constancia <b class="dot-sep">·</b> Autoestima <b class="dot-sep">·</b> Hábitos <b class="dot-sep">·</b> Nutrición <b class="dot-sep">·</b> Salud <b class="dot-sep">·</b> Desarrollo personal <b class="dot-sep">·</b> </span>
+    <span data-k="mq">Constancia <b class="dot-sep">·</b> Autoestima <b class="dot-sep">·</b> Hábitos <b class="dot-sep">·</b> Nutrición <b class="dot-sep">·</b> Salud <b class="dot-sep">·</b> Desarrollo personal <b class="dot-sep">·</b> </span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-img reveal"></div>
+      <div class="reveal">
+        <span class="section-label" data-k="aboutLabel">Sobre mí</span>
+        <h2 class="serif section-title"><span data-k="aboutTitle">Hola, soy Sandra.</span></h2>
+        <p style="font-size:18px;color:var(--ink-soft);margin-bottom:18px" data-k="aboutP1">Trabajadora social, personal trainer y profesora de pilates. Durante años he acompañado a mujeres como tú a salir del bucle de empezar y dejarlo.</p>
+        <p style="font-size:16px;color:var(--ink-soft)" data-k="aboutP2">Mi enfoque no es solo entrenar: es construir una estructura real de vida — alimentación, hábitos, autoestima y salud mental — que puedas sostener cuando yo ya no esté.</p>
+        <div class="pillars">
+          <div class="pillar"><div class="pillar-num">01</div><div class="pillar-name" data-k="pil1">Constancia</div></div>
+          <div class="pillar"><div class="pillar-num">02</div><div class="pillar-name" data-k="pil2">Alimentación</div></div>
+          <div class="pillar"><div class="pillar-num">03</div><div class="pillar-name" data-k="pil3">Autoestima</div></div>
+          <div class="pillar"><div class="pillar-num">04</div><div class="pillar-name" data-k="pil4">Desarrollo personal</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMS -->
+<section>
+  <div class="wrap">
+    <div class="reveal">
+      <span class="section-label" data-k="probLabel">¿Te suena?</span>
+      <h2 class="serif section-title"><span data-k="probTitle">Si te identificas con esto,</span> <span class="italic" style="color:var(--accent-deep)" data-k="probTitle2">estás en el sitio correcto.</span></h2>
+    </div>
+    <div class="problems-grid">
+      <div class="problem reveal"><div class="problem-icon">i</div><h3 data-k="pb1t">Baja autoestima</h3><p data-k="pb1d">Te miras al espejo y no te reconoces. Empiezas con ilusión y acabas culpándote.</p></div>
+      <div class="problem reveal" style="transition-delay:.1s"><div class="problem-icon">ii</div><h3 data-k="pb2t">Falta de constancia</h3><p data-k="pb2d">Lo intentas, fallas, vuelves a empezar. El ciclo te agota más que el propio entreno.</p></div>
+      <div class="problem reveal" style="transition-delay:.2s"><div class="problem-icon">iii</div><h3 data-k="pb3t">Malos hábitos</h3><p data-k="pb3d">Comida desordenada, sueño roto, ansiedad. Sabes qué hacer, pero no consigues hacerlo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section id="planes" style="padding:40px 0 110px">
+  <div class="plans">
+    <div class="plans-head reveal">
+      <div>
+        <span class="section-label" data-k="plansLabel">Planes</span>
+        <h2 class="serif section-title"><span data-k="plansT1">Elige tu</span> <span class="italic" style="color:var(--accent)" data-k="plansT2">nivel de acompañamiento</span>.</h2>
+      </div>
+      <p style="max-width:340px;color:rgba(255,255,255,.65)" data-k="plansP">Todos incluyen 1 semana gratis sin compromiso. Disponibles en 1, 3 y 6 meses.</p>
+    </div>
+    <div class="plans-grid">
+      <div class="plan reveal">
+        <div class="plan-name">Start</div>
+        <div class="plan-slogan" data-k="startSlog">Empieza sin agobios</div>
+        <div class="plan-price">129<sup>€</sup></div>
+        <div class="plan-period" data-k="perMo">por mes</div>
+        <ul class="plan-feats">
+          <li data-k="s1">Plan de entrenamiento adaptado</li>
+          <li data-k="s2">Nutrición base sin restricciones</li>
+          <li data-k="s3">Ajuste mensual</li>
+          <li data-k="s4">Dudas en 48h · ES/EN</li>
+          <li data-k="s5">Checklist semanal de hábitos</li>
+        </ul>
+        <a href="https://wa.me/34633448908?text=Hola%20Sandra%2C%20quiero%20el%20plan%20START" class="btn" data-k="startCta">Empezar Start</a>
+      </div>
+      <div class="plan featured reveal" style="transition-delay:.1s">
+        <div class="plan-tag" data-k="featTag">Más elegido</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-slogan" data-k="proSlog">Donde ocurre el cambio</div>
+        <div class="plan-price">189<sup>€</sup></div>
+        <div class="plan-period" data-k="perMo2">por mes</div>
+        <ul class="plan-feats">
+          <li data-k="p1">Entreno + nutrición 100% personalizado</li>
+          <li data-k="p2">Ajustes semanales según progreso</li>
+          <li data-k="p3">1 llamada semanal (20 min)</li>
+          <li data-k="p4">Dudas en menos de 24h</li>
+          <li data-k="p5">Seguimiento de fotos y sensaciones</li>
+          <li data-k="p6">Mini coaching de hábitos</li>
+        </ul>
+        <a href="https://wa.me/34633448908?text=Hola%20Sandra%2C%20quiero%20el%20plan%20PRO" class="btn" data-k="proCta">Elegir Pro</a>
+      </div>
+      <div class="plan reveal" style="transition-delay:.2s">
+        <div class="plan-name">Elite</div>
+        <div class="plan-slogan" data-k="eliSlog">Acompañamiento total</div>
+        <div class="plan-price">289<sup>€</sup></div>
+        <div class="plan-period" data-k="perMo3">por mes</div>
+        <ul class="plan-feats">
+          <li data-k="e1">Todo lo del plan Pro</li>
+          <li data-k="e2">2 llamadas semanales</li>
+          <li data-k="e3">Respuesta prioritaria en 12h</li>
+          <li data-k="e4">Ajustes continuos en tiempo real</li>
+          <li data-k="e5">Sistema de hábitos personalizado</li>
+          <li data-k="e6">Mindset · bloqueos · disciplina</li>
+        </ul>
+        <a href="https://wa.me/34633448908?text=Hola%20Sandra%2C%20quiero%20el%20plan%20ELITE" class="btn" data-k="eliCta">Ir a Elite</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center">
+      <span class="section-label" data-k="faqLabel">Dudas frecuentes</span>
+      <h2 class="serif section-title" style="margin:0 auto"><span data-k="faqTitle">Lo que necesitas saber.</span></h2>
+    </div>
+    <div class="faq">
+      <details reveal><summary data-k="q1">¿Qué incluye la semana gratis?</summary><p data-k="a1">Acceso completo a una muestra real del plan: entreno personalizado, pautas de nutrición y una llamada de evaluación. Sin tarjeta, sin compromiso.</p></details>
+      <details><summary data-k="q2">¿Es 100% online?</summary><p data-k="a2">Sí. Todo se gestiona por app y WhatsApp. Funciona desde cualquier lugar del mundo, en español o inglés.</p></details>
+      <details><summary data-k="q3">¿Y si nunca he entrenado?</summary><p data-k="a3">Perfecto. El plan Start está diseñado para ti. Empezamos desde cero, sin presión, construyendo base.</p></details>
+      <details><summary data-k="q4">¿Qué pasa si fallo?</summary><p data-k="a4">Nada. Mi trabajo es que vuelvas. Ajustamos, entendemos qué pasó y seguimos. La constancia se construye, no se exige.</p></details>
+      <details><summary data-k="q5">¿Puedo cambiar de plan?</summary><p data-k="a5">Claro. Puedes subir o bajar de plan cada mes según lo que necesites.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="reveal">
+    <h2 class="serif"><span data-k="finalT1">Tu próxima versión</span><br><span class="italic" style="color:var(--accent-deep)" data-k="finalT2">empieza esta semana.</span></h2>
+    <p data-k="finalP">Reserva tu semana gratis. Sin tarjeta, sin compromiso, sin excusas.</p>
+    <a href="https://wa.me/34633448908?text=Hola%20Sandra%2C%20quiero%20empezar%20mi%20semana%20gratis" class="btn btn-primary"><span class="dot"></span><span data-k="finalCta">Reservar mi semana gratis</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h4>Sandra Gutiérrez</h4>
+      <p data-k="footP">Coaching fitness, nutrición y hábitos para mujeres. Personal trainer, pilates y trabajadora social. ES · EN.</p>
+    </div>
+    <div class="footer-col">
+      <h5 data-k="footCon">Contacto</h5>
+      <a href="https://wa.me/34633448908">WhatsApp · +34 633 44 89 08</a>
+      <a href="https://www.instagram.com/sandractive?igsh=MWFnejU3bnNrMGN4NQ==" target="_blank">Instagram · @sandractive</a>
+    </div>
+    <div class="footer-col">
+      <h5 data-k="footNav">Navegación</h5>
+      <a href="#planes" data-k="fn1">Planes</a>
+      <a href="#" data-k="fn2">Semana gratis</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Sandra Gutiérrez Rubio</div>
+    <div data-k="footMade">Hecho con ♡ en Palma</div>
+  </div>
+</footer>
+
+<script>
+const T={
+ es:{navCta:"WhatsApp",eyebrow:"Coaching 1:1 · 100% Online",h1a:"No necesitas",h1b:"otra dieta.",h1c:"Necesitas",h1d:"estructura",heroSub:"Personal trainer, pilates y trabajadora social. Acompañamiento real para mujeres de 20 a 30 años que quieren recuperar constancia, hábitos y autoestima.",ctaPrimary:"Empezar mi semana gratis",ctaGhost:"Ver planes →",badgeFree:"✦ 1 Semana Gratis",stat1:"Años · ES/EN",stat2:"Online",stat3:"Disciplinas",stat4:"Compromiso",tag1:"Respuesta en 24h",tag2:"Pilates + Fuerza",mq:"Constancia · Autoestima · Hábitos · Nutrición · Salud · Desarrollo personal · ",aboutLabel:"Sobre mí",aboutTitle:"Hola, soy Sandra.",aboutP1:"Trabajadora social, personal trainer y profesora de pilates. Durante años he acompañado a mujeres como tú a salir del bucle de empezar y dejarlo.",aboutP2:"Mi enfoque no es solo entrenar: es construir una estructura real de vida — alimentación, hábitos, autoestima y salud mental — que puedas sostener cuando yo ya no esté.",pil1:"Constancia",pil2:"Alimentación",pil3:"Autoestima",pil4:"Desarrollo personal",probLabel:"¿Te suena?",probTitle:"Si te identificas con esto,",probTitle2:"estás en el sitio correcto.",pb1t:"Baja autoestima",pb1d:"Te miras al espejo y no te reconoces. Empiezas con ilusión y acabas culpándote.",pb2t:"Falta de constancia",pb2d:"Lo intentas, fallas, vuelves a empezar. El ciclo te agota más que el propio entreno.",pb3t:"Malos hábitos",pb3d:"Comida desordenada, sueño roto, ansiedad. Sabes qué hacer, pero no consigues hacerlo.",plansLabel:"Planes",plansT1:"Elige tu",plansT2:"nivel de acompañamiento.",plansP:"Todos incluyen 1 semana gratis sin compromiso. Disponibles en 1, 3 y 6 meses.",startSlog:"Empieza sin agobios",perMo:"por mes",s1:"Plan de entrenamiento adaptado",s2:"Nutrición base sin restricciones",s3:"Ajuste mensual",s4:"Dudas en 48h · ES/EN",s5:"Checklist semanal de hábitos",startCta:"Empezar Start",featTag:"Más elegido",proSlog:"Donde ocurre el cambio",perMo2:"por mes",p1:"Entreno + nutrición 100% personalizado",p2:"Ajustes semanales según progreso",p3:"1 llamada semanal (20 min)",p4:"Dudas en menos de 24h",p5:"Seguimiento de fotos y sensaciones",p6:"Mini coaching de hábitos",proCta:"Elegir Pro",eliSlog:"Acompañamiento total",perMo3:"por mes",e1:"Todo lo del plan Pro",e2:"2 llamadas semanales",e3:"Respuesta prioritaria en 12h",e4:"Ajustes continuos en tiempo real",e5:"Sistema de hábitos personalizado",e6:"Mindset · bloqueos · disciplina",eliCta:"Ir a Elite",faqLabel:"Dudas frecuentes",faqTitle:"Lo que necesitas saber.",q1:"¿Qué incluye la semana gratis?",a1:"Acceso completo a una muestra real del plan: entreno personalizado, pautas de nutrición y una llamada de evaluación. Sin tarjeta, sin compromiso.",q2:"¿Es 100% online?",a2:"Sí. Todo se gestiona por app y WhatsApp. Funciona desde cualquier lugar del mundo, en español o inglés.",q3:"¿Y si nunca he entrenado?",a3:"Perfecto. El plan Start está diseñado para ti. Empezamos desde cero, sin presión, construyendo base.",q4:"¿Qué pasa si fallo?",a4:"Nada. Mi trabajo es que vuelvas. Ajustamos, entendemos qué pasó y seguimos. La constancia se construye, no se exige.",q5:"¿Puedo cambiar de plan?",a5:"Claro. Puedes subir o bajar de plan cada mes según lo que necesites.",finalT1:"Tu próxima versión",finalT2:"empieza esta semana.",finalP:"Reserva tu semana gratis. Sin tarjeta, sin compromiso, sin excusas.",finalCta:"Reservar mi semana gratis",footP:"Coaching fitness, nutrición y hábitos para mujeres. Personal trainer, pilates y trabajadora social. ES · EN.",footCon:"Contacto",footNav:"Navegación",fn1:"Planes",fn2:"Semana gratis",footMade:"Hecho con ♡ en Palma"},
+ en:{navCta:"WhatsApp",eyebrow:"1:1 Coaching · 100% Online",h1a:"You don't need",h1b:"another diet.",h1c:"You need",h1d:"structure",heroSub:"Personal trainer, pilates instructor and social worker. Real support for women aged 20–30 who want to rebuild consistency, habits and self-esteem.",ctaPrimary:"Start my free week",ctaGhost:"See plans →",badgeFree:"✦ 1 Free Week",stat1:"Years · ES/EN",stat2:"Online",stat3:"Disciplines",stat4:"Commitment",tag1:"Reply within 24h",tag2:"Pilates + Strength",mq:"Consistency · Self-esteem · Habits · Nutrition · Health · Personal growth · ",aboutLabel:"About me",aboutTitle:"Hi, I'm Sandra.",aboutP1:"Social worker, personal trainer and pilates instructor. For years I've helped women like you break the start-and-quit loop.",aboutP2:"My focus isn't just training — it's building a real life structure (nutrition, habits, self-esteem, mental health) you can sustain long after we stop working together.",pil1:"Consistency",pil2:"Nutrition",pil3:"Self-esteem",pil4:"Personal growth",probLabel:"Sound familiar?",probTitle:"If this feels like you,",probTitle2:"you're in the right place.",pb1t:"Low self-esteem",pb1d:"You look in the mirror and don't recognize yourself. You start with hope and end in guilt.",pb2t:"No consistency",pb2d:"You try, fail, restart. The cycle drains you more than the workout itself.",pb3t:"Bad habits",pb3d:"Messy eating, broken sleep, anxiety. You know what to do — you just can't do it.",plansLabel:"Plans",plansT1:"Choose your",plansT2:"level of support.",plansP:"All include 1 free week, no commitment. Available in 1, 3 and 6 months.",startSlog:"Start without overwhelm",perMo:"per month",s1:"Adapted training plan",s2:"Base nutrition, no restrictions",s3:"Monthly adjustment",s4:"Questions in 48h · ES/EN",s5:"Weekly habit checklist",startCta:"Start",featTag:"Most chosen",proSlog:"Where real change happens",perMo2:"per month",p1:"100% personalized training + nutrition",p2:"Weekly adjustments by progress",p3:"1 weekly call (20 min)",p4:"Questions answered in under 24h",p5:"Photo and feel tracking",p6:"Mini habit coaching",proCta:"Choose Pro",eliSlog:"Full support",perMo3:"per month",e1:"Everything in Pro",e2:"2 weekly calls",e3:"Priority reply under 12h",e4:"Real-time continuous adjustments",e5:"Custom habit system",e6:"Mindset · blocks · discipline",eliCta:"Go Elite",faqLabel:"FAQ",faqTitle:"What you need to know.",q1:"What's in the free week?",a1:"Full access to a real sample: personalized training, nutrition guidelines and an evaluation call. No card, no commitment.",q2:"Is it fully online?",a2:"Yes. Everything runs through app and WhatsApp. Works from anywhere, in Spanish or English.",q3:"What if I've never trained?",a3:"Perfect. The Start plan is made for you. We begin from zero, no pressure.",q4:"What if I slip?",a4:"Nothing. My job is to bring you back. We adjust, understand what happened and keep going. Consistency is built, not demanded.",q5:"Can I switch plans?",a5:"Of course. You can upgrade or downgrade each month.",finalT1:"Your next version",finalT2:"starts this week.",finalP:"Book your free week. No card, no commitment, no excuses.",finalCta:"Book my free week",footP:"Fitness, nutrition and habit coaching for women. Personal trainer, pilates and social worker. ES · EN.",footCon:"Contact",footNav:"Navigation",fn1:"Plans",fn2:"Free week",footMade:"Made with ♡ in Palma"},
+ fr:{navCta:"WhatsApp",eyebrow:"Coaching 1:1 · 100% En ligne",h1a:"Tu n'as pas besoin",h1b:"d'un autre régime.",h1c:"Tu as besoin de",h1d:"structure",heroSub:"Personal trainer, prof de pilates et travailleuse sociale. Un vrai accompagnement pour les femmes de 20 à 30 ans qui veulent retrouver constance, habitudes et estime de soi.",ctaPrimary:"Ma semaine gratuite",ctaGhost:"Voir les plans →",badgeFree:"✦ 1 Semaine Offerte",stat1:"Ans · ES/EN",stat2:"En ligne",stat3:"Disciplines",stat4:"Engagement",tag1:"Réponse en 24h",tag2:"Pilates + Force",mq:"Constance · Confiance · Habitudes · Nutrition · Santé · Développement personnel · ",aboutLabel:"À propos",aboutTitle:"Salut, je suis Sandra.",aboutP1:"Travailleuse sociale, personal trainer et prof de pilates. Depuis des années j'aide des femmes comme toi à sortir du cycle commencer-abandonner.",aboutP2:"Mon approche ne se limite pas à l'entraînement : c'est construire une vraie structure de vie — nutrition, habitudes, estime, santé mentale — que tu pourras maintenir seule.",pil1:"Constance",pil2:"Nutrition",pil3:"Estime de soi",pil4:"Développement",probLabel:"Ça te parle ?",probTitle:"Si tu te reconnais,",probTitle2:"tu es au bon endroit.",pb1t:"Manque de confiance",pb1d:"Tu te regardes et ne te reconnais pas. Tu commences motivée et finis par culpabiliser.",pb2t:"Pas de constance",pb2d:"Tu essaies, échoues, recommences. Le cycle t'épuise plus que l'entraînement.",pb3t:"Mauvaises habitudes",pb3d:"Alimentation désordonnée, sommeil cassé, anxiété. Tu sais quoi faire mais tu n'y arrives pas.",plansLabel:"Plans",plansT1:"Choisis ton",plansT2:"niveau d'accompagnement.",plansP:"Tous incluent 1 semaine gratuite sans engagement. En 1, 3 ou 6 mois.",startSlog:"Commence sans pression",perMo:"par mois",s1:"Plan d'entraînement adapté",s2:"Nutrition de base sans restriction",s3:"Ajustement mensuel",s4:"Questions sous 48h · ES/EN",s5:"Checklist hebdo d'habitudes",startCta:"Commencer",featTag:"Le plus choisi",proSlog:"Là où le changement arrive",perMo2:"par mois",p1:"Entraînement + nutrition 100% perso",p2:"Ajustements hebdomadaires",p3:"1 appel par semaine (20 min)",p4:"Questions sous 24h",p5:"Suivi photos et ressentis",p6:"Mini coaching d'habitudes",proCta:"Choisir Pro",eliSlog:"Accompagnement total",perMo3:"par mois",e1:"Tout le plan Pro",e2:"2 appels par semaine",e3:"Réponse prioritaire sous 12h",e4:"Ajustements en temps réel",e5:"Système d'habitudes personnalisé",e6:"Mental · blocages · discipline",eliCta:"Elite",faqLabel:"Questions",faqTitle:"Ce que tu dois savoir.",q1:"Que contient la semaine gratuite ?",a1:"Un vrai échantillon : entraînement personnalisé, conseils nutrition et un appel. Sans carte, sans engagement.",q2:"C'est 100% en ligne ?",a2:"Oui. Tout passe par l'app et WhatsApp. De n'importe où, en espagnol ou anglais.",q3:"Et si je n'ai jamais fait de sport ?",a3:"Parfait. Le plan Start est fait pour toi. On part de zéro, sans pression.",q4:"Et si j'échoue ?",a4:"Rien. Mon rôle est de te faire revenir. On ajuste et on continue.",q5:"Je peux changer de plan ?",a5:"Bien sûr. Tu peux monter ou descendre chaque mois.",finalT1:"Ta prochaine version",finalT2:"commence cette semaine.",finalP:"Réserve ta semaine gratuite. Sans carte, sans engagement.",finalCta:"Réserver ma semaine",footP:"Coaching fitness, nutrition et habitudes pour femmes. ES · EN.",footCon:"Contact",footNav:"Navigation",fn1:"Plans",fn2:"Semaine gratuite",footMade:"Fait avec ♡ à Palma"},
+ it:{navCta:"WhatsApp",eyebrow:"Coaching 1:1 · 100% Online",h1a:"Non ti serve",h1b:"un'altra dieta.",h1c:"Ti serve",h1d:"struttura",heroSub:"Personal trainer, insegnante di pilates e assistente sociale. Supporto reale per donne 20–30 che vogliono ritrovare costanza, abitudini e autostima.",ctaPrimary:"La mia settimana gratis",ctaGhost:"Vedi i piani →",badgeFree:"✦ 1 Settimana Gratis",stat1:"Anni · ES/EN",stat2:"Online",stat3:"Discipline",stat4:"Impegno",tag1:"Risposta in 24h",tag2:"Pilates + Forza",mq:"Costanza · Autostima · Abitudini · Nutrizione · Salute · Crescita personale · ",aboutLabel:"Chi sono",aboutTitle:"Ciao, sono Sandra.",aboutP1:"Assistente sociale, personal trainer e insegnante di pilates. Da anni aiuto donne come te a uscire dal ciclo inizio-mollo.",aboutP2:"Il mio approccio non è solo allenamento: è costruire una vera struttura di vita che puoi mantenere da sola.",pil1:"Costanza",pil2:"Nutrizione",pil3:"Autostima",pil4:"Crescita",probLabel:"Ti suona?",probTitle:"Se ti riconosci,",probTitle2:"sei nel posto giusto.",pb1t:"Poca autostima",pb1d:"Ti guardi allo specchio e non ti riconosci. Inizi con entusiasmo e finisci colpevolizzandoti.",pb2t:"Nessuna costanza",pb2d:"Provi, molli, ricominci. Il ciclo ti stanca più dell'allenamento stesso.",pb3t:"Cattive abitudini",pb3d:"Alimentazione disordinata, sonno rotto, ansia. Sai cosa fare ma non ci riesci.",plansLabel:"Piani",plansT1:"Scegli il tuo",plansT2:"livello di supporto.",plansP:"Tutti includono 1 settimana gratis senza impegno. In 1, 3 o 6 mesi.",startSlog:"Inizia senza stress",perMo:"al mese",s1:"Piano di allenamento adattato",s2:"Nutrizione base senza restrizioni",s3:"Aggiustamento mensile",s4:"Dubbi in 48h · ES/EN",s5:"Checklist settimanale",startCta:"Inizia",featTag:"Più scelto",proSlog:"Dove avviene il cambiamento",perMo2:"al mese",p1:"Allenamento + nutrizione 100% personalizzati",p2:"Aggiustamenti settimanali",p3:"1 chiamata a settimana (20 min)",p4:"Risposta in meno di 24h",p5:"Monitoraggio foto e sensazioni",p6:"Mini coaching di abitudini",proCta:"Scegli Pro",eliSlog:"Supporto totale",perMo3:"al mese",e1:"Tutto il piano Pro",e2:"2 chiamate a settimana",e3:"Risposta prioritaria in 12h",e4:"Aggiustamenti in tempo reale",e5:"Sistema di abitudini personalizzato",e6:"Mindset · blocchi · disciplina",eliCta:"Elite",faqLabel:"Domande",faqTitle:"Quello che devi sapere.",q1:"Cosa include la settimana gratis?",a1:"Un vero assaggio: allenamento personalizzato, linee guida nutrizionali e una chiamata. Senza carta, senza impegno.",q2:"È tutto online?",a2:"Sì. Tutto via app e WhatsApp. Funziona da ovunque, in spagnolo o inglese.",q3:"E se non ho mai allenato?",a3:"Perfetto. Il piano Start è per te. Partiamo da zero, senza pressione.",q4:"E se fallisco?",a4:"Niente. Il mio lavoro è farti tornare. Aggiustiamo e proseguiamo.",q5:"Posso cambiare piano?",a5:"Certo. Puoi salire o scendere ogni mese.",finalT1:"La tua prossima versione",finalT2:"inizia questa settimana.",finalP:"Prenota la tua settimana gratis. Senza carta, senza impegno.",finalCta:"Prenota la mia settimana",footP:"Coaching fitness, nutrizione e abitudini per donne. ES · EN.",footCon:"Contatti",footNav:"Navigazione",fn1:"Piani",fn2:"Settimana gratis",footMade:"Fatto con ♡ a Palma"},
+ de:{navCta:"WhatsApp",eyebrow:"1:1 Coaching · 100% Online",h1a:"Du brauchst keine",h1b:"weitere Diät.",h1c:"Du brauchst",h1d:"Struktur",heroSub:"Personal Trainerin, Pilates-Lehrerin und Sozialarbeiterin. Echte Begleitung für Frauen 20–30, die Konstanz, Gewohnheiten und Selbstwert zurückgewinnen wollen.",ctaPrimary:"Gratis-Woche starten",ctaGhost:"Pläne ansehen →",badgeFree:"✦ 1 Woche Gratis",stat1:"Jahre · ES/EN",stat2:"Online",stat3:"Disziplinen",stat4:"Verpflichtung",tag1:"Antwort in 24h",tag2:"Pilates + Kraft",mq:"Konstanz · Selbstwert · Gewohnheiten · Ernährung · Gesundheit · Persönliche Entwicklung · ",aboutLabel:"Über mich",aboutTitle:"Hi, ich bin Sandra.",aboutP1:"Sozialarbeiterin, Personal Trainerin und Pilates-Lehrerin. Seit Jahren helfe ich Frauen wie dir, aus dem Anfangen-Aufhören-Kreislauf auszubrechen.",aboutP2:"Mein Ansatz ist nicht nur Training — es geht darum, eine echte Lebensstruktur zu bauen, die du auch ohne mich hältst.",pil1:"Konstanz",pil2:"Ernährung",pil3:"Selbstwert",pil4:"Entwicklung",probLabel:"Kommt dir bekannt vor?",probTitle:"Wenn dich das trifft,",probTitle2:"bist du hier richtig.",pb1t:"Geringer Selbstwert",pb1d:"Du siehst in den Spiegel und erkennst dich nicht. Du startest voller Hoffnung und endest in Schuldgefühlen.",pb2t:"Keine Konstanz",pb2d:"Du versuchst es, scheiterst, fängst neu an. Der Kreislauf erschöpft dich mehr als das Training.",pb3t:"Schlechte Gewohnheiten",pb3d:"Chaotisches Essen, gestörter Schlaf, Angst. Du weißt was zu tun ist — du schaffst es nur nicht.",plansLabel:"Pläne",plansT1:"Wähle deine",plansT2:"Begleitungsstufe.",plansP:"Alle inkl. 1 Gratis-Woche ohne Verpflichtung. In 1, 3 oder 6 Monaten.",startSlog:"Starte ohne Stress",perMo:"pro Monat",s1:"Angepasster Trainingsplan",s2:"Ernährung ohne Verbote",s3:"Monatliche Anpassung",s4:"Fragen in 48h · ES/EN",s5:"Wöchentliche Gewohnheits-Checkliste",startCta:"Start",featTag:"Am beliebtesten",proSlog:"Wo Veränderung passiert",perMo2:"pro Monat",p1:"100% personalisiertes Training + Ernährung",p2:"Wöchentliche Anpassungen",p3:"1 Call pro Woche (20 min)",p4:"Antworten unter 24h",p5:"Foto- und Gefühls-Tracking",p6:"Mini Habit Coaching",proCta:"Pro wählen",eliSlog:"Volle Begleitung",perMo3:"pro Monat",e1:"Alles aus Pro",e2:"2 Calls pro Woche",e3:"Priorität unter 12h",e4:"Laufende Echtzeit-Anpassungen",e5:"Persönliches Gewohnheits-System",e6:"Mindset · Blockaden · Disziplin",eliCta:"Elite",faqLabel:"Fragen",faqTitle:"Was du wissen musst.",q1:"Was ist in der Gratis-Woche?",a1:"Voller Zugang zu einer echten Probe: personalisiertes Training, Ernährungsrichtlinien und ein Call. Ohne Karte, ohne Verpflichtung.",q2:"Alles online?",a2:"Ja. Alles läuft über App und WhatsApp. Funktioniert von überall, auf Spanisch oder Englisch.",q3:"Und wenn ich nie trainiert habe?",a3:"Perfekt. Der Start-Plan ist für dich. Wir beginnen bei null, ohne Druck.",q4:"Und wenn ich scheitere?",a4:"Nichts. Mein Job ist es, dich zurückzuholen. Wir passen an und machen weiter.",q5:"Kann ich den Plan wechseln?",a5:"Klar. Du kannst jeden Monat hoch oder runter.",finalT1:"Deine nächste Version",finalT2:"beginnt diese Woche.",finalP:"Sichere dir deine Gratis-Woche. Ohne Karte, ohne Verpflichtung.",finalCta:"Gratis-Woche buchen",footP:"Fitness-, Ernährungs- und Gewohnheits-Coaching für Frauen. ES · EN.",footCon:"Kontakt",footNav:"Navigation",fn1:"Pläne",fn2:"Gratis-Woche",footMade:"Gemacht mit ♡ in Palma"}
+};
+
+const waMsg={es:"Hola%20Sandra%2C%20quiero%20mi%20semana%20gratis",en:"Hi%20Sandra%2C%20I%20want%20my%20free%20week",fr:"Salut%20Sandra%2C%20je%20veux%20ma%20semaine%20gratuite",it:"Ciao%20Sandra%2C%20voglio%20la%20mia%20settimana%20gratis",de:"Hi%20Sandra%2C%20ich%20will%20meine%20Gratis-Woche"};
+
+function setLang(lang){
+  if(!T[lang])lang="en";
+  document.documentElement.lang=lang;
+  document.querySelectorAll("[data-k]").forEach(el=>{
+    const v=T[lang][el.dataset.k];
+    if(v!==undefined)el.innerHTML=v;
+  });
+  // update main WA CTAs
+  document.querySelectorAll('a[href*="wa.me/34633448908"]').forEach((a,i)=>{
+    if(a.href.includes("?text="))a.href="https://wa.me/34633448908?text="+waMsg[lang];
+  });
+  try{localStorage.setItem("sg_lang",lang)}catch(e){}
+}
+
+// Auto-detect
+const saved=(()=>{try{return localStorage.getItem("sg_lang")}catch(e){return null}})();
+const browser=(navigator.language||"es").slice(0,2).toLowerCase();
+const initial=saved||(T[browser]?browser:"es");
+document.getElementById("langSel").value=initial;
+setLang(initial);
+document.getElementById("langSel").addEventListener("change",e=>setLang(e.target.value));
+
+// Reveal on scroll
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add("in")),{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
